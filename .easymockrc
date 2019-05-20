@@ -1,0 +1,10 @@
+{
+  output: "mock",
+  template: "axios",
+  projects: [
+    {
+      id: "5cdffe756a71205ae880970a", // 这个 ID 是 官方地址的id 复制过来即可使用
+      name: "user", // 自动生成到 mock/user 目录下。
+    },
+  ]
+}
