@@ -89,7 +89,7 @@ module.exports = {
     // 配置多个代理
     proxy: {
       '/api': {
-        target: 'https://easy-mock.com', // 目标服务器主机
+        target: 'https://easy-mock.com/mock', // 目标服务器主机
         ws: true, //代理的WebSockets
         changeOrigin: true, // 需要虚拟主机站点 ，为True表示需要跨域
         pathRewrite: {
