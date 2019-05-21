@@ -9,6 +9,10 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/',
+      redirect: '/home'
+    },
+    {
       path: '/home',
       name: '主界面',
       component: Home,
@@ -58,17 +62,19 @@ export default new Router({
         {
           path: '/test-mock',
           name: '用于测试，上线时删除即可',
-          component: () => import('@/test/test-mock.vue')
+          component: () => import('@/test/test-mock.vue'),
+          meta: { isboo: true }
         }
       ]
     },
     {
-      path: '/',
+      path: '/login',
       name: 'login',
       component: Login
     },
     {
-      path: '/login',
+      path: '/getout',
+      name: '退出',
       component: Login
     }
   ]

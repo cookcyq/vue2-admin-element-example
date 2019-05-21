@@ -1,6 +1,6 @@
 <template>
   <div class="uncomplete">
-    <el-table :data="tableData" style="width: 100%">
+    <el-table v-if="data.length > 1" :data="data" style="width: 100%">
       <el-table-column prop="date" label="时间" width="180"></el-table-column>
       <el-table-column prop="name" label="作者" width="180"></el-table-column>
       <el-table-column prop="title" label="标题"></el-table-column>
@@ -10,41 +10,18 @@
   </div>
 </template>
 
-  <script>
+<script>
+import { response_result } from '@/utils/result.js'
 export default {
   data() {
     return {
-      tableData: [
-        {
-          date: '2016-05-02',
-          name: '王小虎',
-          title: '这是一个标题',
-          status: '未审批',
-          id: '001'
-        },
-        {
-          date: '2016-05-04',
-          name: '王小虎',
-          title: '这是一个标题',
-          status: '未审批',
-          id: '001'
-        },
-        {
-          date: '2016-05-01',
-          name: '王小虎',
-          title: '这是一个标题',
-          status: '未审批',
-          id: '001'
-        },
-        {
-          date: '2016-05-03',
-          name: '王小虎',
-          title: '这是一个标题',
-          status: '未审批',
-          id: '001'
-        }
-      ]
+      data: []
     }
+  },
+  created: function() {
+    response_result('uncomplete', res => {
+      this.data = res
+    })
   }
 }
 </script>

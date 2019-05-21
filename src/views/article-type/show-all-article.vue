@@ -25,7 +25,6 @@ export default {
       all_article_get()
         .then(res => {
           this.data = res.data.data
-          console.log(this.data)
         })
         .catch(error => {
           console.log('请求错误' + error)

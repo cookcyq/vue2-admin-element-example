@@ -95,7 +95,7 @@
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item>查看</el-dropdown-item>
                 <el-dropdown-item>新增</el-dropdown-item>
-                <router-link to="/login" tag="li" tabindex="-1" class="el-dropdown-menu__item">退出</router-link>
+                <router-link to="/getout" tag="li" tabindex="-1" class="el-dropdown-menu__item">退出</router-link>
               </el-dropdown-menu>
             </el-dropdown>
             <div class="grid-content bg-purple"></div>
@@ -103,7 +103,7 @@
         </el-row>
       </el-header>
 
-      <el-main style="text-align:left;">
+      <el-main style="text-align:left;" class="main">
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -157,5 +157,11 @@ html {
       }
     }
   }
+}
+// Loading 及字体的位置
+.circular,
+.el-loading-text {
+  top: -150px;
+  position: relative;
 }
 </style>

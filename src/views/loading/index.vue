@@ -6,7 +6,6 @@
       v-loading.fullscreen.lock="fullscreenLoading"
     >指令方式</el-button>
     <el-button type="primary" @click="openFullScreen">服务方式</el-button>
-    <button @click="fs">发送请求</button>
   </div>
 </template>
 
@@ -19,19 +18,21 @@ export default {
   },
   methods: {
     openFullScreen() {
-      var loading = this.$loading()
+      this.fullscreenLoading = true
+      setTimeout(() => {
+        this.fullscreenLoading = false
+      }, 2000)
+    },
+    openFullScreen() {
+      const loading = this.$loading({
+        lock: true,
+        text: 'Loading',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      })
       setTimeout(() => {
         loading.close()
       }, 2000)
-    },
-    fs: function() {
-      this.axios
-        .get(
-          'https://www.easy-mock.com/mock/5cdffe756a71205ae880970a/all-article'
-        )
-        .then(res => {
-          console.log(res)
-        })
     }
   }
 }

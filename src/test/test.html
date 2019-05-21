@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="../../node_modules/nprogress/nprogress.js"></script>
+    <link rel="stylesheet" href="../../node_modules/nprogress/nprogress.css" />
+  </head>
+  <body>
+    <button id="btn">测试</button>
+    <script>
+      document.getElementById('btn').onclick = function() {
+        NProgress.set(0.4)
+        setTimeout(function() {
+          console.log('done')
+          NProgress.done()
+        }, 1000)
+      }
+    </script>
+  </body>
+</html>
