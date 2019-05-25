@@ -1,6 +1,6 @@
 <template>
   <div class="complete">
-    <el-table v-if="data.length > 1 " :data="data" style="width: 100%">
+    <el-table :data="data" style="width: 100%" stripe empty-text=" ">
       <el-table-column prop="date" label="时间" width="180"></el-table-column>
       <el-table-column prop="name" label="作者" width="180"></el-table-column>
       <el-table-column prop="title" label="标题"></el-table-column>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { response_result } from '@/utils/result.js'
+import request from '@/utils/request.js'
 export default {
   data() {
     return {
@@ -23,11 +23,13 @@ export default {
   },
   methods: {
     complete: function() {
-      // 只拿complete的文章
-      // 注意回调函数里 要使用ES6箭头函数，否则this指向的时函数内部 而不是外部
-      response_result('complete', res => {
-        this.data = res
-      })
+      request('/a')
+        .then(res => {
+          this.data = res.data.data
+        })
+        .catch(err => {
+          console.log('响应报错了 + ' + err)
+        })
     }
   }
 }

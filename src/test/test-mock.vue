@@ -1,37 +1,24 @@
 <template>
   <div>
-    <el-button
-      type="primary"
-      @click="openFullScreen"
-      v-loading.fullscreen.lock="fullscreenLoading"
-    >指令方式</el-button>
-    <el-button type="primary" @click="openFullScreen">服务方式</el-button>
-    <button @click="fs">发送请求</button>
+    <button @click="btn">发起请求</button>
+    <button @click="getenv">获取环境</button>
+    <button @click="getRouterInfo">获取路由信息</button>
   </div>
 </template>
 
 <script>
+import axios from '@/utils/request.js'
 export default {
-  data() {
-    return {
-      fullscreenLoading: false
-    }
-  },
+  created: function() {},
   methods: {
-    openFullScreen() {
-      var loading = this.$loading()
-      setTimeout(() => {
-        loading.close()
-      }, 2000)
+    btn: function() {
+      axios('/a').then(res => {
+        console.log(res)
+      })
     },
-    fs: function() {
-      this.axios
-        .get(
-          'https://www.easy-mock.com/mock/5cdffe756a71205ae880970a/all-article'
-        )
-        .then(res => {
-          console.log(res)
-        })
+    getenv: function() {},
+    getRouterInfo: function() {
+      console.log(this.$route)
     }
   }
 }

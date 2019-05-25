@@ -51,7 +51,7 @@
 import { setCookie } from '@/utils/cookie.js'
 export default {
   methods: {
-    // 登陆时 携带cookie
+    // 点击登陆时 携带cookie
     login: function() {
       setCookie('VIP')
     }

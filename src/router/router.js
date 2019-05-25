@@ -10,60 +10,90 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/home'
+      redirect: '/sub-home'
     },
+
     {
       path: '/home',
       name: '主界面',
       component: Home,
+      redirect: '/home/sub-home', // 主界面上来后 先显示子路由里的主页区域, 也可以以别名的方式来显示
+      // isboo用来判断面包屑， 为true 则会在内容前面加上 / ， 主页面是false, 前面则不会加上 /
+      meta: { title: '主页', isboo: false },
       children: [
         {
-          path: '/sub-home',
-          name: '主页',
+          path: 'sub-home',
+          name: 'index',
           component: () => import('@/views/home/index.vue')
         },
 
         {
-          path: '/add-article',
-          name: '添加文章',
-          component: () => import('@/views/add-article/index.vue')
+          path: 'add-article',
+          name: 'add-article',
+          component: () => import('@/views/add-article/index.vue'),
+          meta: { title: '添加文章', isboo: true }
+        },
+
+        {
+          path: 'article-type',
+          name: 'article-type',
+          // 引入一个坑（router-view)， 否则下面的子路由显示不了, 因为它们是根据父路由来渲染组件的
+          component: () => import('@/views/article-type/index.vue'),
+          meta: { title: '文章分类', isboo: true },
+          children: [
+            {
+              path: 'all-article',
+              name: 'all',
+              component: () => import('@/views/article-type/all-article/index'),
+              meta: { title: '所有文章', isboo: true }
+            },
+            {
+              path: 'complete',
+              name: 'complete',
+              component: () => import('@/views/article-type/complete/index'),
+              meta: { title: '已审批', isboo: true }
+            },
+            {
+              path: 'uncomplete',
+              name: 'uncomplete',
+              component: () => import('@/views/article-type/uncomplete/index'),
+              meta: { title: '未审批', isboo: true }
+            },
+            {
+              path: 'delete',
+              name: 'delete',
+              component: () => import('@/views/article-type/delete/index'),
+              meta: { title: '已删除', isboo: true }
+            },
+            {
+              path: 'recovery',
+              name: 'recovery',
+              meta: { title: '回收站', isboo: true },
+              component: () =>
+                import('@/views/article-type/recovery/index.vue'),
+              children: [
+                {
+                  path: 'unclear',
+                  name: 'unclear',
+                  component: () =>
+                    import('@/views/article-type/recovery/unclear/index'),
+                  meta: { title: '未清理', isboo: true }
+                }
+              ]
+            }
+          ]
         },
         {
-          path: '/edit',
-          name: '编辑资料',
-          component: () => import('@/views/edit/index.vue')
-        },
-        {
-          path: '/show-complete',
-          name: '已审批',
-          component: () => import('@/views/article-type/show-complete.vue')
-        },
-        // 文章分类
-        {
-          path: '/show-all-article',
-          name: '所有文章',
-          component: () => import('@/views/article-type/show-all-article.vue')
-        },
-        {
-          path: '/show-uncomplete',
-          name: '未审批',
-          component: () => import('@/views/article-type/show-uncomplete.vue')
-        },
-        {
-          path: '/show-delete',
-          name: '已删除',
-          component: () => import('@/views/article-type/show-delete.vue')
-        },
-        {
-          path: '/recovery',
-          name: '回收站',
-          component: () => import('@/views/article-type/recovery.vue')
+          path: 'edit',
+          name: 'edit',
+          component: () => import('@/views/edit/index.vue'),
+          meta: { title: '编辑资料', isboo: true }
         },
         {
           path: '/test-mock',
-          name: '用于测试，上线时删除即可',
+          name: '测试',
           component: () => import('@/test/test-mock.vue'),
-          meta: { isboo: true }
+          meta: { title: '测试', isboo: true }
         }
       ]
     },
@@ -76,6 +106,11 @@ export default new Router({
       path: '/getout',
       name: '退出',
       component: Login
+    },
+    {
+      path: '/404',
+      name: '404',
+      component: () => import('@/views/404')
     }
   ]
 })

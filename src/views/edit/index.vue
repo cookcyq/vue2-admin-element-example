@@ -1,13 +1,13 @@
 <template>
   <div class="edit">
-    <ed-upload></ed-upload>
-    <ed-form></ed-form>
+    <a-upload></a-upload>
+    <b-form></b-form>
   </div>
 </template>
 <script>
-import upload from '@/views/edit/components/upload.vue'
-import form from '@/views/edit/components/form.vue'
+import a_upload from '@/views/edit/components/A-upload.vue'
+import b_form from '@/views/edit/components/B-form.vue'
 export default {
-  components: { 'ed-form': form, 'ed-upload': upload }
+  components: { 'a-upload': a_upload, 'b-form': b_form }
 }
 </script>

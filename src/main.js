@@ -4,7 +4,6 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 import '@/layout/css/login1.css'
 
-import nprogress from 'nprogress'
 import '../node_modules/nprogress/nprogress.css'
 
 import App from '@/App.vue'
@@ -13,27 +12,9 @@ import router from '@/router/router.js'
 
 import store from '@/store/store.js'
 
-import axios from 'axios'
-Vue.prototype.axios = axios
-// 通过请求拦截 使用Loading
-var set
-axios.interceptors.request.use(config => {
-  set = ElementUI.Loading.service({
-    text: '正在加载数据...',
-    target: document.querySelector('main')
-  })
-  return config
-})
-axios.interceptors.response.use(config => {
-  set.close()
-  return config
-})
-
-// 使用路由首先来验证登陆权限, 以及退出,同时加上进度条
+// 路由守卫来验证登陆权限, 以及退出
 import { getCookie, removeCookie } from '@/utils/cookie.js'
 router.beforeEach((to, from, next) => {
-  nprogress.start()
-  nprogress.done()
   if (to.path == '/getout') {
     removeCookie()
     next()
@@ -41,7 +22,7 @@ router.beforeEach((to, from, next) => {
   // 必须要有cookie 才能进去路由，同时有cookie后需要防止额外的跳转
   if (getCookie()) {
     if (to.path === '/login') {
-      next('/home')
+      next('/sub-home')
     } else {
       next()
     }
