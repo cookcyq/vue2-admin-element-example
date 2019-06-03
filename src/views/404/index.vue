@@ -42,7 +42,7 @@
     display: flex;
     justify-content: space-around;
     width: 1000px;
-    margin-top: -200px;
+    margin-top: 100px;
     // flex-grow: 1; // 元素的权重，越高它的放大比例就越高，默认0，如果为2 其他为1 则比其他大2倍
     // flex: 1; // flex-grow flex-shink flex-basis的简写； 优先使用这个属性
     // align-self: flex-end; // 该元素可以单独设置它的对其方式，覆盖掉父容器的algin-items

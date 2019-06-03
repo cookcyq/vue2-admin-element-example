@@ -2,9 +2,10 @@ import axios from 'axios'
 import nprogress from 'nprogress'
 const req = axios.create({
   // 使用了proxy代理以api代替原来的easy-mock接口， 可以简写，也防止跨域。
-  // baseURL:
-  //   process.env.NODE_ENV === 'production' ? 'http://localhost:3000' : '/api'
-  baseURL: '/foo'
+  baseURL:
+    process.env.NODE_ENV === 'production' ? 'http://localhost:3000' : '/api',
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+  // baseURL: '/foo'
 })
 
 // 请求拦截设置进度条效果

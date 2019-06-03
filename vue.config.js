@@ -98,7 +98,8 @@ module.exports = {
     proxy: {
       '/api': {
         // 目标服务器接口
-        target: 'https://www.easy-mock.com/mock/5cdffe756a71205ae880970a',
+        // target: 'https://www.easy-mock.com/mock/5cdffe756a71205ae880970a',
+        target: 'http://localhost:3000',
         ws: true, //代理的WebSockets
         changeOrigin: true, // 需要虚拟主机站点 ，为True表示需要跨域
         pathRewrite: {

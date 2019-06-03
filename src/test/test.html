@@ -5,19 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <script src="../../node_modules/nprogress/nprogress.js"></script>
-    <link rel="stylesheet" href="../../node_modules/nprogress/nprogress.css" />
+    <script src="../../node_modules/vue/dist/vue.js"></script>
   </head>
   <body>
-    <button id="btn">测试</button>
+    <div id="box">
+      <h2 ref="ff"></h2>
+    </div>
     <script>
-      document.getElementById('btn').onclick = function() {
-        NProgress.set(0.4)
-        setTimeout(function() {
-          console.log('done')
-          NProgress.done()
-        }, 1000)
-      }
+      var vm = new Vue({
+        el: '#box'
+      })
+      console.log(vm.$refs)
     </script>
   </body>
 </html>

@@ -1,0 +1,51 @@
+/* 侧边栏 */
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 100%;
+}
+// 处理隐藏侧边栏文字不消消失和箭头不消失问题
+.el-menu--collapse {
+  .el-submenu {
+    & > .el-submenu__title {
+      & > span {
+        height: 0;
+        width: 0;
+        overflow: hidden;
+        visibility: hidden;
+        display: inline-block;
+      }
+    }
+    & .el-submenu__icon-arrow {
+      display: none;
+    }
+  }
+}
+// 侧边栏滚动条
+.el-scrollbar__wrap {
+  overflow-x: hidden;
+  .el-scrollbar__view {
+    height: 100%;
+  }
+}
+
+/* 面包屑 和 个人中心 */
+.el-header {
+  line-height: 60px;
+  .el-breadcrumb {
+    padding-top: 27px;
+  }
+  .el-button {
+    border: none;
+
+    img {
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+    }
+  }
+  // 去掉个人头像按钮的hover
+  .el-button:hover {
+    background: none;
+  }
+}

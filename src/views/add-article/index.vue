@@ -94,4 +94,10 @@ export default {
   }
 }
 </script>
+<style lang='scss'>
+.el-form > .el-form-item > .el-form-item__content {
+  text-align: left;
+}
+</style>
+
 

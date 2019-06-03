@@ -15,6 +15,9 @@
 
 
 <style>
+.avatar-uploader {
+  text-align: left;
+}
 .avatar-uploader .el-upload {
   border: 1px dashed #d9d9d9;
   border-radius: 6px;

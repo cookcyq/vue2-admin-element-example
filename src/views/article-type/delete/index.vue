@@ -11,17 +11,21 @@
 </template>
 
 <script>
-// import { response_result } from '@/utils/result.js'
+import request from '@/utils/request.js'
 export default {
   data() {
     return {
       data: []
     }
+  },
+  created: function() {
+    request('/a')
+      .then(res => {
+        this.data = res.data.data
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
-  // created: function() {
-  //   response_result('delete', res => {
-  //     this.data = res
-  //   })
-  // }
 }
 </script>
